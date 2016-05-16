@@ -1,23 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 {% if articles %}
-    {% for article in get_first(articles_page.object_list) %}
-    <div class="container tsot">
-        <div class="row">
-            <div class="m_date">
-                <p>
-                {{ article.date|strftime('%B %d, %Y') }}
-                <br />{{ article.summary|striptags }}
-                </p>
-            </div>
-            <div class="m_title">
-                <h2>{{ article.title }}</h2>
-            </div>
-            <div class="m_content">
-            {{ article.content }}
-            </div>
+{% set most_recent = articles_page.object_list[0] %}
+<div class="container tsot">
+    <div class="row">
+        <div class="m_date">
+            <p>
+            {{ most_recent.date|strftime('%B %d, %Y') }}
+            <br />{{ most_recent.summary|striptags }}
+            </p>
+        </div>
+        <div class="m_title">
+            <h2>{{ most_recent.title }}</h2>
+        </div>
+        <div class="m_content">
+            {{ most_recent.content }}
         </div>
     </div>
-    {% endfor %}
+</div>
 {% endif %}
 {% endblock content %}

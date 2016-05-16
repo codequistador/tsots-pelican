@@ -39,10 +39,15 @@
     <div class="container recent">
       <div class="row">
         <h3>There's also this...</h3>
-        <ul>
-        
-        WRITE FOR LOOP HERE
-        
+        {% set recent = articles if not all_articles else all_articles %}
+        <ul id="recent-posts">
+        {% for a in recent %}
+            {% if loop.index <= 5 %}
+            <li>
+                <a href="{{ SITEURL }}/{{ a.url }}">{{ a.title }}</a>
+            </li>
+            {% endif %}
+        {% endfor %}
         </ul>
       </div>
     </div>
