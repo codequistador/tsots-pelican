@@ -20,7 +20,7 @@ var config = {
 	dist: './output',
   rsync: {
     options: {
-      destination: '~/home/jdaining/tsots.justindaining.com/public_html/',
+      destination: '/home/jdaining/tsots.justindaining.com/public_html/',
       root: './output',
       hostname: 'justindaining.com',
       username: 'jdaining',
@@ -78,7 +78,7 @@ gulp.task('server', ['builddev'], function() {
   });
 });
 
-gulp.task('deploy', function() {
+gulp.task('deploy', ['buildprod'], function() {
   return gulp.src(config.dist + '**')
     .pipe(rsync(config.rsync.options));
 });
