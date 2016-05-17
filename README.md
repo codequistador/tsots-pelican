@@ -2,6 +2,6 @@
 
 My Blog. Built with Pelican. Powered by Gulp.
 
-Build CSS, Pelican Entries and run a dev server with `gulp`
+Run `gulp` to build CSS, Pelican Entries and start a local dev server.
 
-Send to webhost with `gulp deploy`
+Run `gulp deploy` to upload the files to web server with rsync. 
