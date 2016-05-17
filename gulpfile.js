@@ -8,6 +8,7 @@ var cleanCSS = require('gulp-clean-css');
 var uglify = require('gulp-uglify');
 var run = require('gulp-shell');
 var runSequence = require('run-sequence');
+var rsync  = require('gulp-rsync');
 
 var config = {
 	themeDir: './themes/tsots',
@@ -17,6 +18,22 @@ var config = {
 	imgDir: './themes/tsots/static/images',
 	jsDir: './themes/tsots/static/js',
 	dist: './output',
+  rsync: {
+    options: {
+      destination: '~/home/jdaining/tsots.justindaining.com/public_html/',
+      root: './output',
+      hostname: 'justindaining.com',
+      username: 'jdaining',
+      incremental: true,
+      progress: true,
+      relative: true,
+      emptyDirectories: true,
+      recursive: true,
+      clean: true,
+      exclude: ['.DS_Store'],
+      include: []
+    }
+  }
 }
 
 var reload = browserSync.reload;
@@ -59,6 +76,11 @@ gulp.task('server', ['builddev'], function() {
       baseDir: config.dist
     }
   });
+});
+
+gulp.task('deploy', function() {
+  return gulp.src(config.dist + '**')
+    .pipe(rsync(config.rsync.options));
 });
 
 gulp.task('default', ['server'], function() {
