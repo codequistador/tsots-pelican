@@ -82,7 +82,7 @@ gulp.task('pelicanprod', ['css'], function() {
 });
 
 gulp.task('buildprod', function(callback) {
-  runSequence('clean:output', 'pelicanprod')
+  runSequence('clean:output', 'pelicanprod', callback);
 });
 
 gulp.task('server', ['builddev'], function() {
