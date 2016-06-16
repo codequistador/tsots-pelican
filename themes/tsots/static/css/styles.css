@@ -55,6 +55,21 @@ body {
   /* Fix for webkit rendering */
   -webkit-text-size-adjust: 100%; }
 
+.iframe_wrap {
+  width: 100%;
+  margin: 0 0 20px;
+  position: relative;
+  padding-bottom: 56%;
+  height: 0;
+  overflow: hidden; }
+
+.iframe_wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important; }
+
 /* SHORTCUT CLASSES
  * ------------------------------------------------ */
 .center {
