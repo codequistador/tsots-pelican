@@ -1,3 +1,5 @@
 pelicanconf.pyc
 publishconf.pyc
+node_modules/
+node_modules/*
 output/
